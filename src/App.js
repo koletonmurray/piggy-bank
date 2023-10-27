@@ -1,11 +1,11 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './layout/Layout';
-import Home from './pages/Home/Home';
-import Learn from './pages/Learn/Learn';
-import AddMoney from './pages/AddMoney/AddMoney';
-import Savings from './pages/Savings/Savings'
-import Spending from './pages/Spending/Spending';
+import Home from './pages/Home';
+import Learn from './pages/Learn';
+import AddMoney from './pages/AddMoney';
+import Savings from './pages/Savings'
+import Spending from './pages/Spending';
 
 function App() {
   return (

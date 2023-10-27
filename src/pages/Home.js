@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTotal } from '../TotalSavings/TotalSavings';
-import PageTitle from '../../components/PageTitle';
+import { useTotal } from '../contexts/TotalSavings';
+import PageTitle from '../components/PageTitle';
 
 function Home() {
   const { totalSavings, savedItems } = useTotal();

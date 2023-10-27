@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 
 // Money pngs
-import oneDollar from '../../img/1dollar.png';
-import fiveDollar from '../../img/5dollar.png';
-import tenDollar from '../../img/10dollar.png';
-import twentyDollar from '../../img/20dollar.png';
-import oneCent from '../../img/1cent.png';
-import fiveCent from '../../img/5cent.png';
-import tenCent from '../../img/10cent.png';
-import twentyfiveCent from '../../img/25cent.png';
-
+import oneDollar from '../img/1dollar.png';
+import fiveDollar from '../img/5dollar.png';
+import tenDollar from '../img/10dollar.png';
+import twentyDollar from '../img/20dollar.png';
+import oneCent from '../img/1cent.png';
+import fiveCent from '../img/5cent.png';
+import tenCent from '../img/10cent.png';
+import twentyfiveCent from '../img/25cent.png';
 // Import useTotal
-import { useTotal } from '../TotalSavings/TotalSavings';
-import PageTitle from '../../components/PageTitle';
+import { useTotal } from '../contexts/TotalSavings';
+import PageTitle from '../components/PageTitle';
 
 function AddMoney() {
   const { totalSavings, addToTotalSavings } = useTotal(); // Use useTotal hook
