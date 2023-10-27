@@ -47,7 +47,7 @@ function Savings() {
 
   return (
     <div className="p-4">
-      <PageTitle title={'Savings Goal'}/>
+      <PageTitle title={'Create Your Savings Goal'}/>
 
       {/* Flex container for Total Savings and Target Savings cards */}
       <div className="flex justify-center gap-4 mb-4">
@@ -63,10 +63,11 @@ function Savings() {
       {/* Item Entry */}
       <div/>
       {canAddMoreItems && (
-        <div className="mb-4">
+        <div className="mb-4 pb-5">
+          <p className='text-xl pb-2'>What item(s) are you saving for?</p>
           <input
             type="text"
-            placeholder="Enter the item you are going to save for..."
+            placeholder="Name of the item..."
             value={newItem}
             onChange={(e) => setNewItem(e.target.value)}
             className="p-3 w-[350px] rounded-md border shadow-md focus:outline-none focus:ring focus:border-blue-300"
@@ -81,11 +82,9 @@ function Savings() {
           />
           <button
             onClick={isEditing ? handleUpdateItem : handleAddItem}
-            className={`${
-              isEditing ? 'bg-yellow-500' : 'bg-blue-500'
-            } p-2 text-white font-bold rounded-md cursor-pointer ml-2`}
+            className={`bg-blue-500 p-2 text-white font-bold rounded-md cursor-pointer ml-2`}
           >
-            {isEditing ? 'Update' : 'Add Item'}
+            Add Item
           </button>
         </div>
       )}
@@ -93,7 +92,7 @@ function Savings() {
       {/* List of Saved Items */}
       {savedItems.length > 0 && (
         <div className="mb-4">
-          <h3 className="text-xl font-bold">Items I'm Saving For:</h3>
+          <h3 className="text-2xl font-semibold pb-5">Items I'm Saving For:</h3>
           <table className="w-[60%] mx-auto border-collapse border border-gray-200">
             <thead className="bg-gray-100">
               <tr>
@@ -111,7 +110,7 @@ function Savings() {
                         type="text"
                         value={updatedName}
                         onChange={(e) => setUpdatedName(e.target.value)}
-                        className="w-full rounded-md"
+                        className="rounded-md border border-yellow-500"
                       />
                     ) : (
                       item.item
@@ -124,7 +123,7 @@ function Savings() {
                         step="0.01"
                         value={updatedPrice}
                         onChange={(e) => setUpdatedPrice(e.target.value)}
-                        className="w-full rounded-md"
+                        className="rounded-md border border-yellow-500"
                       />
                     ) : (
                       `$${item.price}`
@@ -134,7 +133,7 @@ function Savings() {
                     {isEditing && updatedIndex === index ? (
                       <button
                         onClick={handleUpdateItem}
-                        className="bg-yellow-500 p-2 text-white font-bold rounded-md cursor-pointer"
+                        className="bg-green-500 p-2 text-white font-bold rounded-md cursor-pointer"
                       >
                         Save
                       </button>

@@ -10,14 +10,14 @@ function Home() {
 
   return (
     <>
-      <PageTitle title={'Welcome to the Piggy Bank app!'} subtitle={'Teach your children to manage their money wisely.'}/>
+      <PageTitle title={'Welcome to the Piggy Bank app!'} subtitle={'Learn to manage your money wisely.'}/>
 
       {/* Flex container for Total Savings and Target Savings cards */}
       <div className="flex justify-center gap-4 mb-4">
         {/* Total Savings Card */}
         <div className="w-[30%]">
           <div className="bg-blue-100 p-4 rounded-lg shadow-md mb-4">
-            <h3 className="text-2xl font-bold">Total Savings</h3>
+            <h3 className="text-2xl font-bold">Total $ Saved</h3>
             <p className="text-3xl font-bold text-green-600">${totalSavings.toFixed(2)}</p>
           </div>
         </div>
@@ -25,7 +25,7 @@ function Home() {
         {/* Target Savings Card */}
         <div className="w-[30%]">
           <div className="bg-yellow-100 p-4 rounded-lg shadow-md mb-4">
-            <h3 className="text-2xl font-bold">Target Savings</h3>
+            <h3 className="text-2xl font-bold">Savings Goal</h3>
             <p className="text-3xl font-bold text-yellow-600">${totalTargetSavings.toFixed(2)}</p>
           </div>
         </div>
