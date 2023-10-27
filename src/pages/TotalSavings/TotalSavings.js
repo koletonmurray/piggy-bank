@@ -10,6 +10,10 @@ export function TotalSavingsProvider({ children }) {
     setTotalSavings(totalSavings + amount);
   };
 
+  const subtractFromTotalSavings = (amount) => {
+    setTotalSavings(totalSavings - amount);
+  }
+
   const addSavedItem = (item, price) => {
     const newItem = { item, price };
     setSavedItems([...savedItems, newItem]);
@@ -32,6 +36,7 @@ export function TotalSavingsProvider({ children }) {
       value={{
         totalSavings,
         addToTotalSavings,
+        subtractFromTotalSavings,
         savedItems,
         addSavedItem,
         removeSavedItem,
