@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header(){
 
     return(
         <div className='bg-gray-100 flex flex-col'>
             <div className=" bg-blue-500 text-white py-4 relative text-center font-bold">
-                <a href='/'>
+                <Link to='/'>
                 <h1 className="text-3xl">
                     <img
                     src="/pig.png"
@@ -14,24 +15,24 @@ function Header(){
                     />
                     Piggy Bank
                 </h1>
-                </a>
+                </Link>
             </div>
             <nav className="bg-blue-400 p-2">
                 <ul className="flex justify-center space-x-10 font-bold text-lg">
                     <li>
-                        <a href='/' className='text-white'>Home</a>
+                        <Link to='/' className='text-white'>Home</Link>
                     </li>
                     <li>
-                        <a href="/savings" className="text-white">Savings</a>
+                        <Link to="/savings" className="text-white">Savings Goal</Link>
                     </li>
                     <li>
-                        <a href="/add-money" className="text-white">Add Money</a>
+                        <Link to="/add-money" className="text-white">Add Money</Link>
                     </li>
                     <li>
-                        <a href="/spending" className="text-white">Spending</a>
+                        <Link to="/spending" className="text-white">Spending</Link>
                     </li>
                     <li>
-                        <a href='/learn' className='text-white'>Learn</a>
+                        <Link to='/learn' className='text-white'>Learn</Link>
                     </li>
                 </ul>
             </nav>
