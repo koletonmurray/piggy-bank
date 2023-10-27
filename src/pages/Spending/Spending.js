@@ -1,19 +1,5 @@
 import React, { useState } from 'react';
 
-// Money pngs
-import oneDollar from '../../img/1dollar.png';
-import fiveDollar from '../../img/5dollar.png';
-import tenDollar from '../../img/10dollar.png';
-import twentyDollar from '../../img/20dollar.png';
-import oneCent from '../../img/1cent.png';
-import fiveCent from '../../img/5cent.png';
-import tenCent from '../../img/10cent.png';
-import twentyfiveCent from '../../img/25cent.png';
-
-// Import useTotal
-import { useTotal } from '../TotalSavings/TotalSavings';
-  
-
 // Import money pngs
 import sub1d from '../../img/sub1d.png'
 import sub5d from '../../img/sub5d.png'
@@ -23,6 +9,10 @@ import sub1c from '../../img/sub1c.png'
 import sub5c from '../../img/sub5c.png'
 import sub10c from '../../img/sub10c.png'
 import sub25c from '../../img/sub25c.png'
+
+// Import useTotal
+import { useTotal } from '../TotalSavings/TotalSavings';
+
 
 function Spending() {
 
@@ -55,16 +45,16 @@ function Spending() {
 
       {/* Money Images */}
       <div className="flex flex-wrap justify-center space-x-4">
-        <MoneyItem value={1} onClick={handleSubtractMoney} img={oneDollar} />
-        <MoneyItem value={5} onClick={handleSubtractMoney} img={fiveDollar} />
-        <MoneyItem value={10} onClick={handleSubtractMoney} img={tenDollar} />
-        <MoneyItem value={20} onClick={handleSubtractMoney} img={twentyDollar} />
+        <MoneyItem value={1} onClick={handleSubtractMoney} img={sub1d} />
+        <MoneyItem value={5} onClick={handleSubtractMoney} img={sub5d} />
+        <MoneyItem value={10} onClick={handleSubtractMoney} img={sub10d} />
+        <MoneyItem value={20} onClick={handleSubtractMoney} img={sub20d} />
       </div>
       <div className="flex flex-wrap justify-center space-x-4 py-4">
-        <MoneyItem value={0.01} onClick={handleSubtractMoney} img={oneCent} />
-        <MoneyItem value={0.05} onClick={handleSubtractMoney} img={fiveCent} />
-        <MoneyItem value={0.1} onClick={handleSubtractMoney} img={tenCent} />
-        <MoneyItem value={0.25} onClick={handleSubtractMoney} img={twentyfiveCent} />
+        <MoneyItem value={0.01} onClick={handleSubtractMoney} img={sub1c} />
+        <MoneyItem value={0.05} onClick={handleSubtractMoney} img={sub5c} />
+        <MoneyItem value={0.1} onClick={handleSubtractMoney} img={sub10c} />
+        <MoneyItem value={0.25} onClick={handleSubtractMoney} img={sub25c} />
       </div>
 
       {/* Total Money Counter */}
