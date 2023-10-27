@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTotal } from '../TotalSavings/TotalSavings';
+import PageTitle from '../../components/PageTitle';
 
 function Home() {
   const { totalSavings, savedItems } = useTotal();
@@ -9,9 +10,7 @@ function Home() {
 
   return (
     <>
-      <p className="text-lg pb-10">
-        Welcome to the Piggy Bank app! Teach your children to manage their money wisely.
-      </p>
+      <PageTitle title={'Welcome to the Piggy Bank app!'} subtitle={'Teach your children to manage their money wisely.'}/>
 
       {/* Flex container for Total Savings and Target Savings cards */}
       <div className="flex justify-center gap-4 mb-4">

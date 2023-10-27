@@ -12,6 +12,7 @@ import twentyfiveCent from '../../img/25cent.png';
 
 // Import useTotal
 import { useTotal } from '../TotalSavings/TotalSavings';
+import PageTitle from '../../components/PageTitle';
 
 function AddMoney() {
   const { totalSavings, addToTotalSavings } = useTotal(); // Use useTotal hook
@@ -29,8 +30,10 @@ function AddMoney() {
 
   return (
     <div className="p-4">
+      <PageTitle title={"Add Money to your Savings"} />
+
       {/* Total Savings Card */}
-      <div className="flex justify-center py-5 pb-10">
+      <div className="flex justify-center pb-10">
         <div className="bg-blue-100 p-4 rounded-lg shadow-md mb-4 w-[30%]">
             <h3 className="text-2xl font-bold">Total Savings</h3>
             <p className="text-3xl font-bold text-green-600">${totalSavings.toFixed(2)}</p>

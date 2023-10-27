@@ -1,11 +1,14 @@
 import React from 'react';
 
-function PageTitle({title}) {
+function PageTitle({title, subtitle}) {
 
     return (
         <div>
-            <div className={`text-center text-4xl font-semibold pb-10`}>
-                <h1>{title}</h1>
+            <div className={`text-center pb-10`}>
+                <h1 className='text-4xl font-semibold '>{title}</h1>
+                {subtitle && (
+                    <h2 className='text-2xl pt-2'>{subtitle}</h2>
+                )}
             </div>
         </div>
   );
