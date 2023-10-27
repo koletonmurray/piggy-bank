@@ -1,38 +1,63 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useSettings } from '../contexts/SettingsContext';
 
-function Header(){
+function Header() {
+    const { settings, setSettings } = useSettings();
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
     const toggleSettings = () => {
         setIsSettingsOpen(!isSettingsOpen);
     };
 
-    return(
-        <div className="bg-gray-100 flex flex-col">
-            <div className="bg-blue-500 text-white py-4 relative text-center font-bold">
-                <Link to="/">
-                <h1 className="text-3xl">
-                    <img
-                    src="/pig.png"
-                    alt="Cute Pig"
-                    className="w-12 h-12 inline-block mr-2 -translate-y-[15%]"
-                    />
-                    Piggy Bank
-                </h1>
-                </Link>
-                <div className="absolute top-5 right-6 bg-blue-500 text-white p-2 rounded-full cursor-pointer">
-                    <Link onClick={toggleSettings}>
-                        <img
-                        src="/smile.png"
-                        alt="Cute Pig"
-                        className="w-7 h-7 inline-block mr-2 -translate-y-[15%]"
-                        />
-                    </Link>
-                </div>
+    const handleSave = () => {
+        setSettings(settings);
+        toggleSettings();
+    };
+
+    // Define a CSS class for the header based on the selected theme
+    const primaryColor = settings.color === 'cottonCandy' ? 'bg-blue-500' : 'bg-green-900';
+    const secondaryColor = settings.color === 'cottonCandy' ? 'bg-blue-400' : 'bg-brown-800';
+
+    return (
+        <div className={`bg-gray-100 flex flex-col`}>
+            <div className={`${primaryColor} text-white py-4 relative text-center font-bold`}>
+                
+                    <h1 className="text-3xl">
+                        <Link to="/">
+                            <img
+                                src="/pig.png"
+                                alt="Cute Pig"
+                                className="w-12 h-12 inline-block mr-2 -translate-y-[15%]"
+                            />
+                            Piggy Bank
+                        </Link>
+                    </h1>
+                
+                {settings.color === 'forest' ? (
+                    <div className="absolute mt-3 mr-5 h-15 w-15 top-1 right-1 bg-gray-300 text-white p-2 rounded-full cursor-pointer flex items-center justify-center">
+                        <Link onClick={toggleSettings}>
+                            <img
+                                src="/pine.png"
+                                alt="Pine"
+                                className="w-7 h-7 inline-block -translate-y-[5%]"
+                            />
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="absolute mt-3 mr-5 h-15 w-15 top-1 right-1 text-white p-2 rounded-full cursor-pointer flex items-center justify-center">
+                        <Link onClick={toggleSettings}>
+                            <img
+                                src="/smile.png"
+                                alt="Smile"
+                                className="w-7 h-7 inline-block"
+                            />
+                        </Link>
+                    </div>
+                )}
             </div>
-            <nav className="bg-blue-400 p-2">
+            <nav className={`${secondaryColor} p-2`}>
                 <ul className="flex justify-center space-x-10 font-bold text-lg">
                     <li>
                         <Link to='/' className='text-white'>Home</Link>
@@ -55,29 +80,53 @@ function Header(){
                 <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 flex items-center justify-center">
                     <div className="bg-white p-4 rounded-md shadow-md relative w-[500px]">
                         <button onClick={toggleSettings} className="absolute top-2 right-4 text-gray-600 text-2xl cursor-pointer">
-                        &#x2716;
+                            &#x2716;
                         </button>
-                        <h2 className="text-xl font-bold mb-2">Settings</h2>
+                        <h2 className="text-xl font-bold mb-5">Settings</h2>
                         <div className="mb-2">
-                        <label className="mr-2">Color:</label>
-                        <label>
-                            <input type="radio" name="color" value="cottonCandy" defaultChecked /> Cotton Candy &nbsp;
-                        </label>
-                        <label>
-                            <input type="radio" name="color" value="forest" /> Forest
-                        </label>
+                            <label className="mr-2"><b>Theme:</b></label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="color"
+                                    value="cottonCandy"
+                                    checked={settings.color === 'cottonCandy'}
+                                    onChange={() => setSettings({ ...settings, color: 'cottonCandy' })}
+                                /> Cotton Candy &nbsp;
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="color"
+                                    value="forest"
+                                    checked={settings.color === 'forest'}
+                                    onChange={() => setSettings({ ...settings, color: 'forest' })}
+                                /> Forest
+                            </label>
                         </div>
                         <div>
-                        <label className="mr-2">Savings Goal:</label>
-                        <label>
-                            <input type="radio" name="goal" value="byItem" defaultChecked /> By Item &nbsp;
-                        </label>
-                        <label>
-                            <input type="radio" name="goal" value="setGoal" /> Set Savings Goal
-                        </label>
+                            <label className="mr-2 font-bold">Savings Goal:</label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="goal"
+                                    value="item"
+                                    checked={settings.goal === 'item'}
+                                    onChange={() => setSettings({ ...settings, goal: 'item' })}
+                                /> By Item &nbsp;
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="goal"
+                                    value="numeric"
+                                    checked={settings.goal === 'numeric'}
+                                    onChange={() => setSettings({ ...settings, goal: 'numeric' })}
+                                /> Set Savings Goal
+                            </label>
                         </div>
-                        <button onClick={toggleSettings} className="mt-2 bg-blue-500 text-white p-2 rounded-md cursor-pointer">
-                        Save
+                        <button onClick={handleSave} className="mt-2 bg-blue-500 text-white p-2 rounded-md cursor-pointer">
+                            Save
                         </button>
                     </div>
                 </div>

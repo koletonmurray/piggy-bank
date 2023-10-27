@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTotal } from '../contexts/TotalSavings';
 import PageTitle from '../components/PageTitle';
+import { useSettings } from '../contexts/SettingsContext';
 
 function Savings() {
   const { savedItems, addSavedItem, removeSavedItem, updateSavedItem } = useTotal();
@@ -45,6 +46,10 @@ function Savings() {
   const canAddMoreItems = savedItems.length < 3; // Check if you can add more items
   const totalTargetSavings = savedItems.reduce((acc, item) => acc + parseFloat(item.price), 0);
 
+  const { settings } = useSettings();
+  const goalColor = settings.color === 'cottonCandy' ? 'bg-pink-100' : 'bg-yellow-100';
+  const goalText = settings.color === 'cottonCandy' ? 'text-blue-500' : 'text-yellow-600';
+
   return (
     <div className="p-4">
       <PageTitle title={'Create Your Savings Goal'}/>
@@ -53,9 +58,9 @@ function Savings() {
       <div className="flex justify-center gap-4 mb-4">
         {/* Savings Goal Card */}
         <div className="w-[30%]">
-          <div className="bg-yellow-100 p-4 rounded-lg shadow-md mb-4">
+          <div className={`p-4 rounded-lg shadow-md mb-4 ${goalColor}`}>
             <h3 className="text-2xl font-bold">Target Savings</h3>
-            <p className="text-3xl font-bold text-yellow-600">${totalTargetSavings.toFixed(2)}</p>
+            <p className={`text-3xl font-bold ${goalText}`}>${totalTargetSavings.toFixed(2)}</p>
           </div>
         </div>
       </div>

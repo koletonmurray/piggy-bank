@@ -4,14 +4,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { TotalSavingsProvider } from './contexts/TotalSavings';
+import { SettingsProvider } from './contexts/SettingsContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <TotalSavingsProvider>
-        <App />
-      </TotalSavingsProvider>
+      <SettingsProvider>
+        <TotalSavingsProvider>
+          <App />
+        </TotalSavingsProvider>
+      </SettingsProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSettings } from '../contexts/SettingsContext';
 
 // Money pngs
 import oneDollar from '../img/1dollar.png';
@@ -27,15 +28,19 @@ function AddMoney() {
     setTotalAdd(0); // Reset the local total add
   };
 
+  const { settings } = useSettings();
+  const savingsColor = settings.color === 'cottonCandy' ? 'bg-blue-100' : 'bg-brown-200';
+  const savingsText = settings.color === 'cottonCandy' ? 'text-green-600' : 'text-green-700';
+
   return (
     <div className="p-4">
       <PageTitle title={"Add Money to your Savings"} />
 
       {/* Total Savings Card */}
       <div className="flex justify-center pb-10">
-        <div className="bg-blue-100 p-4 rounded-lg shadow-md mb-4 w-[30%]">
+        <div className={`${savingsColor} p-4 rounded-lg shadow-md mb-4 w-[30%]`}>
             <h3 className="text-2xl font-bold">Total Savings</h3>
-            <p className="text-3xl font-bold text-green-600">${totalSavings.toFixed(2)}</p>
+            <p className={`text-3xl font-bold ${savingsText}`}>${totalSavings.toFixed(2)}</p>
         </div>
       </div>
 
@@ -60,19 +65,19 @@ function AddMoney() {
 
       {/* Total Money Counter */}
       <div className="mt-8 text-2xl font-bold">
-        Total to Add to Savings: ${totalAdd.toFixed(2)}
+        Total to Add to Savings: <span className='text-green-600'>+${totalAdd.toFixed(2)}</span>
       </div>
 
       <div className="mt-4">
         <button
           onClick={handleAddToSavings}
-          className="bg-green-500 p-2 text-white font-bold rounded-md cursor-pointer hover:bg-green-600 mr-2"
+          className="bg-green-600 p-2 text-white font-bold rounded-md cursor-pointer hover:bg-green-700 mr-2"
         >
           Add to Savings
         </button>
         <button
             onClick={() => setTotalAdd(0)} // Reset the local total to 0
-            className="bg-red-500 p-2 text-white font-bold rounded-md cursor-pointer hover-bg-red-600"
+            className="bg-red-500 p-2 text-white font-bold rounded-md cursor-pointer hover:bg-red-600"
         >
         Clear
         </button>
