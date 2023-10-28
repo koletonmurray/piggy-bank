@@ -22,15 +22,7 @@ function Header(){
                     Piggy Bank
                 </h1>
                 </Link>
-                <div className="absolute top-5 right-6 bg-blue-500 text-white p-2 rounded-full cursor-pointer">
-                    <Link onClick={toggleSettings}>
-                        <img
-                        src="/smile.png"
-                        alt="Cute Pig"
-                        className="w-7 h-7 inline-block mr-2 -translate-y-[15%]"
-                        />
-                    </Link>
-                </div>
+                
             </div>
             <nav className="bg-blue-400 p-2">
                 <ul className="flex justify-center space-x-10 font-bold text-lg">
