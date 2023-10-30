@@ -78,53 +78,63 @@ function Header() {
             </nav>
             {isSettingsOpen && (
                 <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-40 flex items-center justify-center">
+                    {/* Settings Popup */}
                     <div className="bg-white p-4 rounded-md shadow-md relative w-[500px]">
                         <button onClick={toggleSettings} className="absolute top-2 right-4 text-gray-600 text-2xl cursor-pointer">
                             &#x2716;
                         </button>
                         <h2 className="text-xl font-bold mb-5">Settings</h2>
-                        <div className="mb-2">
-                            <label className="mr-2"><b>Theme:</b></label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="color"
-                                    value="cottonCandy"
-                                    checked={settings.color === 'cottonCandy'}
-                                    onChange={() => setSettings({ ...settings, color: 'cottonCandy' })}
-                                /> Cotton Candy &nbsp;
-                            </label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="color"
-                                    value="forest"
-                                    checked={settings.color === 'forest'}
-                                    onChange={() => setSettings({ ...settings, color: 'forest' })}
-                                /> Forest
-                            </label>
+                        <div className="grid grid-cols-2 gap-6 mb-2">
+                            <div className="text-right"> {/* Right-align the labels in the first column */}
+                                <label className="mr-2"><b>Theme:</b></label>
+                            </div>
+                            <div className='text-left'>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="color"
+                                        value="cottonCandy"
+                                        checked={settings.color === 'cottonCandy'}
+                                        onChange={() => setSettings({ ...settings, color: 'cottonCandy' })}
+                                    /> Cotton Candy
+                                </label><br />
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="color"
+                                        value="forest"
+                                        checked={settings.color === 'forest'}
+                                        onChange={() => setSettings({ ...settings, color: 'forest' })}
+                                    /> Forest
+                                </label>
+                            </div>
                         </div>
-                        <div>
-                            <label className="mr-2 font-bold">Savings Goal:</label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="goal"
-                                    value="item"
-                                    checked={settings.goal === 'item'}
-                                    onChange={() => setSettings({ ...settings, goal: 'item' })}
-                                /> By Item &nbsp;
-                            </label>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name="goal"
-                                    value="numeric"
-                                    checked={settings.goal === 'numeric'}
-                                    onChange={() => setSettings({ ...settings, goal: 'numeric' })}
-                                /> Set Savings Goal
-                            </label>
+                        <div className='grid grid-cols-2 gap-6'>
+                            <div className="text-right"> {/* Right-align the labels in the first column */}
+                                <label className="mr-2 font-bold">Savings Goal:</label>
+                            </div>
+                            <div className='text-left'>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="goal"
+                                        value="item"
+                                        checked={settings.goal === 'item'}
+                                        onChange={() => setSettings({ ...settings, goal: 'item' })}
+                                    /> By Item
+                                </label><br />
+                                <label className=''>
+                                    <input
+                                        type="radio"
+                                        name="goal"
+                                        value="numeric"
+                                        checked={settings.goal === 'numeric'}
+                                        onChange={() => setSettings({ ...settings, goal: 'numeric' })}
+                                    /> Set Savings Goal
+                                </label>
+                            </div>
                         </div>
+
                         <button onClick={handleSave} className="mt-2 bg-blue-500 text-white p-2 rounded-md cursor-pointer">
                             Save
                         </button>
