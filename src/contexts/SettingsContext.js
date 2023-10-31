@@ -5,7 +5,7 @@ const SettingsContext = createContext();
 export function SettingsProvider({ children }) {
   const [settings, setSettings] = useState({
     color: 'cottonCandy', // Default color setting
-    goal: 'byItem', // Default goal setting
+    goal: 'item', // Default goal setting
   });
 
   return (
