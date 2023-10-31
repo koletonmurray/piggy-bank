@@ -39,30 +39,54 @@ function Home() {
         </div>
       </div>
 
-    {/* Difference Card (on its own row) */}
-    <div className='flex justify-center'>
-      {totalTargetSavings - totalSavings < 0 ? (
-        <div className="bg-green-100 p-4 rounded-lg shadow-md mb-4">
-          <h3 className="text-2xl font-bold">Leftover Savings</h3>
-          <p className="text-3xl font-bold text-green-600 p-1">
-            ${Math.abs(totalTargetSavings - totalSavings).toFixed(2)}
-          </p>
-          <p className="text-lg">
-            Congratulations! You've met your savings goal.
-          </p>
-        </div>
-      ) : (
-        <div className="bg-red-100 p-4 rounded-lg shadow-md mb-4">
-          <h3 className="text-2xl font-bold">You Still Need to Save</h3>
-          <p className="text-3xl font-bold text-red-600 p-1">
-            ${(totalTargetSavings - totalSavings).toFixed(2)}
-          </p>
-          <p className="text-lg">
-            Keep saving to reach your goal.
-          </p>
-        </div>
-      )}
-    </div>
+      {/* Difference Card (on its own row) */}
+      <div className='flex justify-center'>
+        {settings.goal === 'item' ? (
+          totalTargetSavings - totalSavings < 0 ? (
+            <div className="bg-green-100 p-4 rounded-lg shadow-md mb-4">
+              <h3 className="text-2xl font-bold">Leftover Savings</h3>
+              <p className="text-3xl font-bold text-green-600 p-1">
+                ${Math.abs(totalTargetSavings - totalSavings).toFixed(2)}
+              </p>
+              <p className="text-lg">
+                Congratulations! You've met your savings goal.
+              </p>
+            </div>
+          ) : (
+            <div className="bg-red-100 p-4 rounded-lg shadow-md mb-4">
+              <h3 className="text-2xl font-bold">You Still Need to Save</h3>
+              <p className="text-3xl font-bold text-red-600 p-1">
+                ${(totalTargetSavings - totalSavings).toFixed(2)}
+              </p>
+              <p className="text-lg">
+                Keep saving to reach your goal.
+              </p>
+            </div>
+          )
+        ) : (
+          numericGoal - totalSavings < 0 ? (
+            <div className="bg-green-100 p-4 rounded-lg shadow-md mb-4">
+              <h3 className="text-2xl font-bold">Leftover Savings</h3>
+              <p className="text-3xl font-bold text-green-600 p-1">
+                ${Math.abs(numericGoal - totalSavings).toFixed(2)}
+              </p>
+              <p className="text-lg">
+                Congratulations! You've met your savings goal.
+              </p>
+            </div>
+          ) : (
+            <div className="bg-red-100 p-4 rounded-lg shadow-md mb-4">
+              <h3 className="text-2xl font-bold">You Still Need to Save</h3>
+              <p className="text-3xl font-bold text-red-600 p-1">
+                ${(numericGoal - totalSavings).toFixed(2)}
+              </p>
+              <p className="text-lg">
+                Keep saving to reach your goal.
+              </p>
+            </div>
+          )
+        )}
+      </div>
   </>
   );
 };
