@@ -4,7 +4,7 @@ import PageTitle from '../components/PageTitle';
 import { useSettings } from '../contexts/SettingsContext';
 
 function Home() {
-  const { totalSavings, savedItems } = useTotal();
+  const { totalSavings, savedItems, numericGoal } = useTotal();
   const { settings } = useSettings();
 
   // Calculate the total target savings
@@ -34,7 +34,7 @@ function Home() {
         <div className="w-[25%]">
           <div className={`${goalColor} p-4 rounded-lg shadow-md mb-4`}>
             <h3 className="text-2xl font-bold">Savings Goal</h3>
-            <p className={`text-3xl font-bold ${goalText}`}>${totalTargetSavings.toFixed(2)}</p>
+            <p className={`text-3xl font-bold ${goalText}`}>{settings.goal === 'item' ? `$${totalTargetSavings.toFixed(2)}` : `$${numericGoal}`}</p>
           </div>
         </div>
       </div>

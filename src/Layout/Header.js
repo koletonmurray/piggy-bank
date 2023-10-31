@@ -108,7 +108,7 @@ function Header() {
                                     /> Forest
                                 </label>
                             </div>
-                        </div>
+                        </div> <br/>
                         <div className='grid grid-cols-2 gap-6'>
                             <div className="text-right"> {/* Right-align the labels in the first column */}
                                 <label className="mr-2 font-bold">Savings Goal:</label>
@@ -121,7 +121,7 @@ function Header() {
                                         value="item"
                                         checked={settings.goal === 'item'}
                                         onChange={() => setSettings({ ...settings, goal: 'item' })}
-                                    /> By Item
+                                    /> Specific Items
                                 </label><br />
                                 <label className=''>
                                     <input
@@ -130,7 +130,7 @@ function Header() {
                                         value="numeric"
                                         checked={settings.goal === 'numeric'}
                                         onChange={() => setSettings({ ...settings, goal: 'numeric' })}
-                                    /> Set Savings Goal
+                                    /> Bulk Numeric Goal
                                 </label>
                             </div>
                         </div>

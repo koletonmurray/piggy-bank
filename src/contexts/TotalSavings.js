@@ -4,7 +4,8 @@ const TotalSavingsContext = createContext();
 
 export function TotalSavingsProvider({ children }) {
   const [totalSavings, setTotalSavings] = useState(0);
-  const [savedItems, setSavedItems] = useState([]); // Modify to store objects with item and price
+  const [savedItems, setSavedItems] = useState([]);
+  const [numericGoal, setNumericGoal] = useState(0);
 
   const addToTotalSavings = (amount) => {
     setTotalSavings(totalSavings + amount);
@@ -12,7 +13,7 @@ export function TotalSavingsProvider({ children }) {
 
   const subtractFromTotalSavings = (amount) => {
     setTotalSavings(totalSavings - amount);
-  }
+  };
 
   const addSavedItem = (item, price) => {
     const newItem = { item, price };
@@ -31,6 +32,14 @@ export function TotalSavingsProvider({ children }) {
     setSavedItems(updatedItems);
   };
 
+  const updateNumericGoal = (goal) => {
+    setNumericGoal(goal);
+  };
+
+  const removeNumericGoal = () => {
+    setNumericGoal(0);
+  };
+
   return (
     <TotalSavingsContext.Provider
       value={{
@@ -41,9 +50,12 @@ export function TotalSavingsProvider({ children }) {
         addSavedItem,
         removeSavedItem,
         updateSavedItem,
+        numericGoal,
+        updateNumericGoal,
+        removeNumericGoal,
       }}
     >
-      {children}
+        {children}
     </TotalSavingsContext.Provider>
   );
 }
