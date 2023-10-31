@@ -121,7 +121,7 @@ function Header() {
                                         value="item"
                                         checked={settings.goal === 'item'}
                                         onChange={() => setSettings({ ...settings, goal: 'item' })}
-                                    /> Specific Items
+                                    /> Save by Item
                                 </label><br />
                                 <label className=''>
                                     <input
@@ -130,7 +130,7 @@ function Header() {
                                         value="numeric"
                                         checked={settings.goal === 'numeric'}
                                         onChange={() => setSettings({ ...settings, goal: 'numeric' })}
-                                    /> Bulk Numeric Goal
+                                    /> Save by Amount
                                 </label>
                             </div>
                         </div>
