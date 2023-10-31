@@ -10,7 +10,7 @@ function Header() {
     const toggleSettings = () => {
         setIsSettingsOpen(!isSettingsOpen);
     };
-
+  
     const handleSave = () => {
         setSettings(settings);
         toggleSettings();
