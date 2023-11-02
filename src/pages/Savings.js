@@ -2,8 +2,27 @@ import React, { useState } from 'react';
 import { useTotal } from '../contexts/TotalSavings';
 import PageTitle from '../components/PageTitle';
 import { useSettings } from '../contexts/SettingsContext';
+import clothing from '../img/clothing.png';
+import electronics from '../img/electronic.png';
+import toy from '../img/toy.png'
+import game from '../img/game.png'
+import general from '../img/general.png'
+import other from '../img/other.png'
+import food from '../img/food.png'
 
 function Savings() {
+  
+  const categoryImages = {
+    Electronics: electronics,
+    Toy: toy,
+    Game: game,
+    Clothing: clothing,
+    Food: food,
+    'General Savings': general,
+    Other: other,
+  };
+
+  const categoryOptions = ['Electronics', 'Toy', 'Game', 'Clothing', 'Food', 'General Savings', 'Other'];
   const { savedItems, addSavedItem, removeSavedItem, updateSavedItem, numericGoal, updateNumericGoal, removeNumericGoal } = useTotal();
   const [newItem, setNewItem] = useState('');
   const [newPrice, setNewPrice] = useState('');
@@ -13,13 +32,17 @@ function Savings() {
   const [updatedName, setUpdatedName] = useState('');
   const [updatedPrice, setUpdatedPrice] = useState('');
   const [updatedIndex, setUpdatedIndex] = useState(null);
+  const [newCategory, setNewCategory] = useState(categoryOptions[0]);
+  const [updatedCategory, setUpdatedCategory] = useState(categoryOptions[0]);
+
 
   const handleAddItem = () => {
-    if (newItem && newPrice) {
+    if (newItem && newPrice && newCategory) {
       const price = parseFloat(newPrice).toFixed(2);
-      addSavedItem(newItem, price);
+      addSavedItem(newItem, price, newCategory);
       setNewItem('');
       setNewPrice('');
+      setNewCategory('');
     }
   };
 
@@ -31,16 +54,18 @@ function Savings() {
     setUpdatedIndex(index);
     setUpdatedName(savedItems[index].item);
     setUpdatedPrice(savedItems[index].price);
+    setUpdatedCategory(savedItems[index].category);
     setIsEditing(true);
   };
 
   const handleUpdateItem = () => {
-    if (updatedName && updatedPrice) {
+    if (updatedName && updatedPrice && updatedCategory) {
       const price = parseFloat(updatedPrice).toFixed(2);
-      updateSavedItem(updatedIndex, { item: updatedName, price });
+      updateSavedItem(updatedIndex, { item: updatedName, price, category : updatedCategory });
       setUpdatedIndex(null);
       setUpdatedName('');
       setUpdatedPrice('');
+      setUpdatedCategory(''); //Reset the category input
       setIsEditing(false);
     }
   };
@@ -110,6 +135,19 @@ function Savings() {
                   onChange={(e) => setNewItem(e.target.value)}
                   className="p-3 w-[350px] rounded-md border shadow-md focus:outline-none focus:ring focus:border-blue-300"
                 />
+                <select
+                  value={newCategory}
+                  onChange={(e) => setNewCategory(e.target.value)}
+                  className="ml-2 p-3 rounded-md border shadow-md focus:outline-none focus:ring focus:border-blue-300"
+              >
+                <option value="">Select a Category</option>
+                  {categoryOptions.map((category, categoryIndex) => (
+                <option key={categoryIndex} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+
                 <input
                   type="number"
                   step="0.01"
@@ -135,7 +173,9 @@ function Savings() {
                   <thead className="bg-gray-100">
                     <tr>
                       <th className="py-2 px-4 font-bold text-center">Item</th>
+                      <th className="py-2 px-4 font-bold text-center">Category</th>
                       <th className="py-2 px-4 font-bold text-center">Price</th>
+                      <th className="py-2 px-4 font-bold text-center">Image</th>
                       <th className="py-2 px-4 font-bold text-center">Action</th>
                     </tr>
                   </thead>
@@ -156,6 +196,23 @@ function Savings() {
                         </td>
                         <td className="py-2 px-4">
                           {isEditing && updatedIndex === index ? (
+                            <select
+                              value={updatedCategory}
+                              onChange={(e) => setUpdatedCategory(e.target.value)}
+                              className="rounded-md border border-yellow-500"
+                            >
+                              {categoryOptions.map((category, categoryIndex) => (
+                                <option key={categoryIndex} value={category}>
+                                  {category}
+                                </option>
+                            ))}
+                          </select>
+                          ) : (
+                            item.category
+                          )}
+                        </td>
+                        <td className="py-2 px-4">
+                          {isEditing && updatedIndex === index ? (
                             <input
                               type="number"
                               step="0.01"
@@ -165,6 +222,15 @@ function Savings() {
                             />
                           ) : (
                             `$${item.price}`
+                          )}
+                        </td>
+                        <td className="py-2 px-4 text-center">
+                          {categoryImages[item.category] && (
+                            <img
+                              src={categoryImages[item.category]}
+                              alt={item.category}
+                              className="w-12 h-12 mx-auto"
+                            />
                           )}
                         </td>
                         <td className="py-2 px-4">

@@ -15,8 +15,8 @@ export function TotalSavingsProvider({ children }) {
     setTotalSavings(totalSavings - amount);
   };
 
-  const addSavedItem = (item, price) => {
-    const newItem = { item, price };
+  const addSavedItem = (item, price, category) => {
+    const newItem = { item, price, category };
     setSavedItems([...savedItems, newItem]);
   };
 
